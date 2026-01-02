@@ -193,5 +193,5 @@ Regional & Competitive
 ---
 
 ## Sreenshot
-![App Screenshot]([https://example.com/screenshot.png](https://github.com/Sandeep-crtl/Atliq_Insights/blob/main/Atliq%20Insights.png))
+![App Screenshot](https://github.com/Sandeep-crtl/Atliq_Insights/blob/main/Atliq%20Insights.png)
 
