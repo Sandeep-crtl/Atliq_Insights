@@ -191,3 +191,7 @@ Regional & Competitive
 - Project: AtliQ Insights (fictional dataset)
 
 ---
+
+## Sreenshot
+![App Screenshot]([https://example.com/screenshot.png](https://github.com/Sandeep-crtl/Atliq_Insights/blob/main/Atliq%20Insights.png))
+
