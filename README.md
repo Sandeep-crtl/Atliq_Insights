@@ -1,4 +1,4 @@
-Business Insights 360 – Power BI Analytics Project
+**Business Insights 360 – Power BI Analytics Project**
 🏢 Business Context
 
 AtliQ Hardware (fictional company) is a fast-scaling electronics manufacturer offering products such as PC accessories, printers, notebooks, desktops, and networking devices. Over the last few years, the company has expanded its footprint across major global regions including APAC, North America, Latin America, and the European Union.
