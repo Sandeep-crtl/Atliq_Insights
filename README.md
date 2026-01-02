@@ -1,223 +1,193 @@
-**Business Insights 360 – Power BI Analytics Project**
-🏢 Business Context
-
-AtliQ Hardware (fictional company) is a fast-scaling electronics manufacturer offering products such as PC accessories, printers, notebooks, desktops, and networking devices. Over the last few years, the company has expanded its footprint across major global regions including APAC, North America, Latin America, and the European Union.
-
-AtliQ sells its products through multiple routes:
-
-Offline retail partners (electronics stores and large retailers)
-
-E-commerce platforms (global and regional online marketplaces)
-
-Sales operations are further segmented into:
-
-Retailers – third-party sellers (online & offline)
-
-Direct Stores – AtliQ-owned branded outlets
-
-Distributors – used in regulated markets such as China and South Korea
-
-Note: AtliQ’s customers are retailers and distributors, while end consumers purchase products through these channels.
-
-🚩 Business Problem
-
-As AtliQ expanded rapidly, its analytics ecosystem failed to scale at the same pace. Critical business decisions were driven by fragmented Excel reports, resulting in poor visibility, delayed insights, and costly missteps—most notably during the company’s expansion into Latin America.
-
-Meanwhile, competitors adopted advanced analytics platforms, gaining faster insights and sharper decision-making capabilities. To address this gap and establish a scalable, data-driven culture, AtliQ initiated a centralized analytics transformation project.
-
-🎯 Project Objective
-
-The objective of this project is to design a comprehensive Power BI dashboard suite that delivers actionable insights across key business functions:
-
-Finance
-
-Sales
-
-Marketing
-
-Supply Chain
-
-Executive & Key Performers View
-
-The solution improves transparency, accelerates decision-making, and supports strategic planning across the organization.
-
-🗄️ Data Sources
-
-The analysis is based on a combination of SQL databases and Excel files.
-
-Excel Files
-
-Operating Expenses
-
-Targets (FY 2022 only)
-
-Market Share (Personal Computer division only)
-
-SQL Databases
-
-gdb041
-
-Fact Tables
-
-fact_sales_monthly
-
-fact_forecast_monthly
-
-Dimension Tables
-
-dim_customer
-
-dim_market
-
-dim_product
-
-gdb056
-
-freight_cost
-
-gross_price
-
-manufacturing_cost
-
-pre_invoice_deductions
-
-post_invoice_deductions
-
-Additional Context
-
-Fiscal Year: September to August
-
-Actual sales data: Sep 2017 – Dec 2021
-
-Forecasts and targets include FY 2022
-
-Raw datasets cannot be shared due to bootcamp constraints
-
-🧹 Data Cleaning & Modeling
-Data Standardization
-
-Removed leading and trailing spaces
-
-Standardized naming conventions
-
-Ensured consistent join keys across tables
-
-Data Modeling & Optimization
-
-Created a custom Date dimension aligned with AtliQ’s fiscal calendar
-
-Consolidated sales and forecast data into a unified table: fact_actual_estimates
-
-Derived calculated metrics including:
-
-Pre-invoice deductions
-
-Post-invoice deductions
-
-Net sales and profitability
-
-Disabled load for intermediary tables to reduce model size and improve performance
-
-📊 Dashboard Scope
-
-The Power BI report includes:
-
-Functional dashboards for Finance, Sales, Marketing, and Supply Chain
-
-Executive summary with high-level KPIs
-
-Key performers analysis by product, customer, and region
-
-Additional Panels
-
-Information Panel – FAQs and future provision for Excel exports
-
-Support Panel – feedback, issue reporting, feature requests, and contingency planning
-(integration subject to organizational approval)
-
-🛠️ Tools & Technologies
-
-Data Transformation: Power Query
-
-Data Modeling & Analysis: DAX
-
-Visualization & Reporting: Power BI
-
-📈 Key Insights
-Financial Performance
-
-Net sales showed strong multi-year growth from FY 2019 to FY 2022
-
-Net Profit % declined post-2020 due to heavy operational and marketing investments typical of growth-stage companies
-
-Market & Revenue Trends
-
-APAC remained the largest revenue contributor, led by India
-
-Latin America remained the smallest market
-
-Amazon was the top global customer, while Nova showed declining contribution after FY 2020
-
-Product & Segment Analysis
-
-Notebook segment achieved the highest revenue growth but suffered declining profitability in FY 2022
-
-Desktop and Networking segments underperformed in different fiscal years
-
-USB flash drives consistently declined in FY 2021 and FY 2022
-
-Sales & Customer Behavior
-
-Uniform discounting across customers and products significantly reduced Gross Margin %
-
-Several products recorded zero sales in FY 2022, indicating portfolio rationalization opportunities
+# 🚀 Business Insights 360 — Power BI Analytics Project
+
+[![Power BI](https://img.shields.io/badge/Tool-Power%20BI-orange)]() [![DAX](https://img.shields.io/badge/Language-DAX-blue)]() [![PowerQuery](https://img.shields.io/badge/ETL-Power%20Query-yellowgreen)]()
+
+A professional, end-to-end Power BI analytics solution built for AtliQ Hardware (fictional). The project transforms fragmented reports into a single, scalable dashboard suite that enables faster, data-driven decisions across Finance, Sales, Marketing, and Supply Chain.
+
+---
+
+## Table of Contents
+- About
+- Business Context
+- Problem Statement
+- Project Objective
+- Data Sources
+- Data Cleaning & Modeling
+- Dashboard Scope
+- Tools & Technologies
+- Key Insights (summary)
+- Strategic Recommendations
+- Skills & Learnings
+- How to review / run (notes)
+- Limitations & Data Privacy
+- Contact
+
+---
+
+## About
+AtliQ Hardware is a fast-scaling electronics manufacturer. This repository documents the Power BI design, data model, and insights developed as part of the Business Insights 360 project.
+
+---
+
+## 🏢 Business Context
+AtliQ sells PC accessories, printers, notebooks, desktops, and networking devices through multiple channels:
+- Offline retail partners
+- E-commerce platforms (global & regional)
+- Sales segments: **Retailers**, **Direct Stores**, **Distributors**
+
+Note: Customers are primarily retailers and distributors; end consumers purchase via those channels.
+
+---
+
+## 🚩 Problem Statement
+As AtliQ scaled, analytics remained fragmented (Excel-driven), causing:
+- Poor visibility into performance
+- Slow, manual reporting cycles
+- Suboptimal strategic decisions
+
+Competitors adopted modern analytics and gained faster insights. The project addresses this gap with a scalable Power BI solution.
+
+---
+
+## 🎯 Project Objective
+Design and deliver a unified Power BI dashboard suite that provides:
+- Actionable KPIs for Finance, Sales, Marketing, and Supply Chain
+- Executive-ready summary and trend analysis
+- Customer, product, and region-level performance views
+- A scalable, high-performance data model aligned to AtliQ’s fiscal calendar
+
+---
+
+## 🗄️ Data Sources
+Data originates from a mix of SQL databases and Excel files.
+
+Excel
+- Operating Expenses.xlsx
+- Targets (FY 2022).xlsx
+- Market Share (PC division).xlsx
+
+SQL Databases and tables
+- gdb041
+  - Fact tables: `fact_sales_monthly`, `fact_forecast_monthly`
+  - Dimension tables: `dim_customer`, `dim_market`, `dim_product`
+- gdb056
+  - Tables: `freight_cost`, `gross_price`, `manufacturing_cost`, `pre_invoice_deductions`, `post_invoice_deductions`
+
+Additional context
+- Fiscal year: **September → August**
+- Actual sales: **Sep 2017 – Dec 2021**
+- Forecasts & targets include **FY 2022**
+- Raw datasets are not included in the repo due to bootcamp constraints
+
+---
+
+## 🧹 Data Cleaning & Modeling (highlights)
+- Standardized naming conventions and removed leading/trailing spaces
+- Ensured consistent join keys across tables
+- Created custom Date dimension aligned with AtliQ’s fiscal calendar
+- Consolidated sales & forecasts into `fact_actual_estimates`
+- Derived metrics:
+  - Pre-invoice deductions
+  - Post-invoice deductions
+  - Net sales, Gross Margin, Net Profit %
+- Disabled Load for intermediary tables to reduce model size and improve performance
+
+---
+
+## 📊 Dashboard Scope
+Delivered Power BI report contains:
+- Functional dashboards: Finance, Sales, Marketing, Supply Chain
+- Executive Summary: high-level KPIs & trend lines
+- Key Performers: top customers, products, and regions
+- Additional panels:
+  - Information panel (FAQs, future Excel export capability)
+  - Support panel (feedback, issues, feature requests) — (integration subject to org approval)
+
+---
+
+## 🛠️ Tools & Technologies
+- Data transformation: Power Query (M)
+- Data modeling & measures: DAX
+- Visualization & reporting: Power BI Desktop
+- Source systems: SQL Server / Excel
+
+---
+
+## 📈 Key Insights (summary)
+Financial
+- Net sales grew multi-year (FY 2019 → FY 2022)
+- Net Profit % declined after 2020 due to growth-stage operational & marketing investments
+
+Market & Revenue
+- APAC (led by India) is the largest revenue contributor
+- Latin America is the smallest market
+- Amazon is the top global customer; Nova declined after FY 2020
+
+Product & Segment
+- Notebook segment: highest revenue growth, lower profitability in FY 2022
+- Desktop & Networking: underperformed in certain fiscal years
+- USB flash drives: consistent decline in FY 2021–2022
+
+Sales & Pricing
+- Uniform discounting across products/customers reduced gross margins
+- Several products had zero sales in FY 2022 → portfolio rationalization opportunities
 
 Forecasting & Supply Chain
+- Forecast accuracy dipped during COVID-19, recovered by FY 2022
+- Inventory issues shifted from overstocking (FY 2019–2020) to shortages (FY 2021–2022)
+- WFH demand increased strain on processors, keyboards, WiFi extenders
 
-Forecast accuracy dropped during COVID-19 but recovered steadily by FY 2022
+Regional & Competitive
+- PC market share grew significantly FY 2021 → FY 2022
+- India fastest-growing market
+- North America: high revenue but lower market penetration
+- UK & Germany: high marketing cost with uneven returns
 
-Inventory challenges shifted from overstocking (FY 2019–2020) to shortages (FY 2021–2022)
+---
 
-Work-from-home demand strained supply for processors, keyboards, and WiFi extenders
+## 📌 Strategic Recommendations
+- Gradually optimize operational & marketing expenses as market share stabilizes
+- Replace flat discounting with performance-based discount strategies
+- Prioritize high-growth APAC markets (especially India)
+- Reassess pricing and cost structure for the Notebook segment
+- Reposition or upgrade declining product categories
+- Improve customer-level forecasting to balance inventory
+- Strengthen North America market penetration strategies
+- Optimize marketing spend in high-cost, low-return regions
+- Align inventory planning to peak months (Sep–Dec)
 
-Competitive & Regional Insights
+---
 
-PC market share increased significantly from FY 2021 to FY 2022
+## 🧠 Skills & Learnings
+- End-to-end BI project execution
+- Cross-functional KPI design
+- Advanced Power BI data modeling and DAX
+- Scalable, executive-ready dashboard design
+- Translating business problems into analytical solutions
 
-India emerged as the fastest-growing market
+---
 
-North America generated high revenue but showed relatively low market penetration
+## ▶️ How to review / run (notes)
+- Open the Power BI Desktop report (.pbix) in Power BI Desktop (recommended latest stable)
+- Connect to authorized SQL sources or swap in sample data files (not included)
+- Refresh model after configuring data source credentials
+- Test filter interactions and measure performance; optimize visuals if needed
 
-UK and Germany incurred high marketing costs with uneven revenue returns
+---
 
-📌 Strategic Recommendations
+## ⚠️ Limitations & Data Privacy
+- Raw data excluded due to bootcamp constraints
+- Some conclusions are sample-driven and should be validated with full production data before operational decisions
 
-Gradually optimize operational and marketing expenses as market share stabilizes
+---
 
-Replace flat discounting with performance-based discount strategies
+## Contributing
+- Suggestions, issue reports, and feature requests are welcome. Please file issues in the repository or send feedback via the Support panel in the report.
 
-Increase focus on high-growth APAC markets, particularly India
+---
 
-Reassess pricing and cost structure of the Notebook segment
+## Contact
+- Maintainer: Sandeep-crtl
+- Project: AtliQ Insights (fictional dataset)
 
-Address declining product categories through repositioning or upgrades
-
-Improve customer-level forecasting to reduce inventory imbalance
-
-Strengthen market penetration strategies in North America
-
-Optimize marketing spend in high-cost, low-return regions
-
-Align inventory planning with peak sales months (September–December)
-
-🧠 Skills & Learnings
-
-End-to-end BI project execution
-
-Strong understanding of cross-functional business KPIs
-
-Advanced Power BI data modeling and DAX
-
-Designing scalable, executive-ready dashboards
-
-Translating business problems into analytical solutions
+---
