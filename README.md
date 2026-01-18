@@ -1,11 +1,8 @@
-# 🚀 Bank Loan Analysis — Power BI Analytics Project
+# 🚀 Business Insights 360 — Power BI Analytics Project
 
-[![Power BI](https://img.shields.io/badge/Tool-Power%20BI-orange)]()
-[![DAX](https://img.shields.io/badge/Language-DAX-blue)]()
-[![PowerQuery](https://img.shields.io/badge/ETL-Power%20Query-yellowgreen)]()
+[![Power BI](https://img.shields.io/badge/Tool-Power%20BI-orange)]() [![DAX](https://img.shields.io/badge/Language-DAX-blue)]() [![PowerQuery](https://img.shields.io/badge/ETL-Power%20Query-yellowgreen)]()
 
-A professional, end-to-end **Bank Loan Analytics** solution built using Power BI.  
-This project consolidates loan application, funding, risk, and profitability data into a single, interactive dashboard suite that enables **data-driven credit, risk, and business decisions**.
+A professional, end-to-end Power BI analytics solution built for AtliQ Hardware (fictional). The project transforms fragmented reports into a single, scalable dashboard suite that enables faster, data-driven decisions across Finance, Sales, Marketing, and Supply Chain.
 
 ---
 
@@ -17,217 +14,183 @@ This project consolidates loan application, funding, risk, and profitability dat
 - Data Sources
 - Data Cleaning & Modeling
 - Dashboard Scope
-- KPI Framework
 - Tools & Technologies
-- Key Insights (Summary)
+- Key Insights (summary)
 - Strategic Recommendations
 - Skills & Learnings
-- How to Review / Run
+- How to review / run (notes)
 - Limitations & Data Privacy
 - Contact
 
 ---
 
 ## About
-This repository documents the design, data model, DAX logic, and insights developed for a **Bank Loan Analysis Power BI Dashboard**.  
-The project focuses on **loan performance, borrower behavior, credit risk, and profitability**, using structured KPIs and time intelligence (MTD, PMTD, MoM).
+AtliQ Hardware is a fast-scaling electronics manufacturer. This repository documents the Power BI design, data model, and insights developed as part of the Business Insights 360 project.
 
 ---
 
-## 🏦 Business Context
-The bank provides loans across multiple purposes, borrower profiles, and credit grades.  
-As loan volume grows, decision-makers need:
-- Clear visibility into loan demand and funding
-- Early identification of credit risk
-- Understanding of profitability versus risk
-- Consistent reporting across time
+## 🏢 Business Context
+AtliQ sells PC accessories, printers, notebooks, desktops, and networking devices through multiple channels:
+- Offline retail partners
+- E-commerce platforms (global & regional)
+- Sales segments: **Retailers**, **Direct Stores**, **Distributors**
 
-This dashboard addresses these needs through a unified analytics layer.
+Note: Customers are primarily retailers and distributors; end consumers purchase via those channels.
 
 ---
 
 ## 🚩 Problem Statement
-Loan reporting was fragmented and metric-heavy without clear narratives, resulting in:
-- Difficulty tracking month-to-date performance
-- Poor visibility into default and risk concentration
-- Limited understanding of profitability drivers
-- Manual effort to compare trends across months
+As AtliQ scaled, analytics remained fragmented (Excel-driven), causing:
+- Poor visibility into performance
+- Slow, manual reporting cycles
+- Suboptimal strategic decisions
 
-A centralized Power BI solution was required to **standardize KPIs**, **enable trend analysis**, and **support faster decisions**.
+Competitors adopted modern analytics and gained faster insights. The project addresses this gap with a scalable Power BI solution.
 
 ---
 
 ## 🎯 Project Objective
-Design and deliver a Power BI dashboard that:
-- Tracks loan demand, funding, and repayments
-- Monitors credit risk using defensible metrics
-- Measures profitability and unit economics
-- Supports MTD, PMTD, and MoM analysis
-- Separates business, risk, and profit narratives clearly
+Design and deliver a unified Power BI dashboard suite that provides:
+- Actionable KPIs for Finance, Sales, Marketing, and Supply Chain
+- Executive-ready summary and trend analysis
+- Customer, product, and region-level performance views
+- A scalable, high-performance data model aligned to AtliQ’s fiscal calendar
 
 ---
 
 ## 🗄️ Data Sources
-The dataset contains historical loan-level records including:
-- Loan ID
-- Application Date
-- Loan Amount & Funded Amount
-- Total Payment Received
-- Loan Purpose
-- Loan Grade
-- Employment Length
-- Debt-to-Income Ratio (DTI)
-- Interest Rate
-- Loan Status (Good / Bad)
+Data originates from a mix of SQL databases and Excel files.
 
-A dedicated **Date Table** is used to enable time intelligence.
+Excel
+- Operating Expenses.xlsx
+- Targets (FY 2022).xlsx
+- Market Share (PC division).xlsx
+
+SQL Databases and tables
+- gdb041
+  - Fact tables: `fact_sales_monthly`, `fact_forecast_monthly`
+  - Dimension tables: `dim_customer`, `dim_market`, `dim_product`
+- gdb056
+  - Tables: `freight_cost`, `gross_price`, `manufacturing_cost`, `pre_invoice_deductions`, `post_invoice_deductions`
+
+Additional context
+- Fiscal year: **September → August**
+- Actual sales: **Sep 2017 – Dec 2021**
+- Forecasts & targets include **FY 2022**
+- Raw datasets are not included in the repo due to bootcamp constraints
 
 ---
 
-## 🧹 Data Cleaning & Modeling
-Key steps performed:
-- Standardized column names and data types
-- Removed duplicates and invalid records
-- Created a Date dimension for time-based analysis
-- Defined relationships between fact and dimension tables
-- Built reusable base measures for consistency
-- Optimized model by avoiding redundant calculations
+## 🧹 Data Cleaning & Modeling (highlights)
+- Standardized naming conventions and removed leading/trailing spaces
+- Ensured consistent join keys across tables
+- Created custom Date dimension aligned with AtliQ’s fiscal calendar
+- Consolidated sales & forecasts into `fact_actual_estimates`
+- Derived metrics:
+  - Pre-invoice deductions
+  - Post-invoice deductions
+  - Net sales, Gross Margin, Net Profit %
+- Disabled Load for intermediary tables to reduce model size and improve performance
 
 ---
 
 ## 📊 Dashboard Scope
-
-### 1️⃣ Summary Page
-**Purpose:** Executive snapshot.
-
-**KPIs:**
-- Total Loan Applications
-- Total Funded Amount
-- Total Amount Received
-- Average Interest Rate
-
----
-
-### 2️⃣ Overview Page
-**Purpose:** Portfolio health and momentum.
-
-**KPIs:**
-- Total Loan Applications
-- Total Funded Amount
-- Approval Rate (%)
-- MoM Loan Application Growth (%)
-
----
-
-### 3️⃣ Details Page
-**Purpose:** Loan composition and borrower behavior.
-
-**KPIs:**
-- Average Loan Amount
-- Applications per Borrower
-- Top Loan Purpose Share (%)
-- Stable Employment Share (%)
-
----
-
-### 4️⃣ Risk Page
-**Purpose:** Credit quality and exposure.
-
-**KPIs:**
-- Bad Loan % (Application-based)
-- Bad Loan Exposure (Funded Amount)
-- Average DTI
-- High-Risk Grade Exposure (%)
-
----
-
-### 5️⃣ Profit Page
-**Purpose:** Financial return vs risk.
-
-**KPIs:**
-- Net Profit
-- Profit Margin (%)
-- Average Interest Rate
-- Profit per Loan
-
----
-
-## 📐 KPI Framework
-The dashboard follows strict KPI design rules:
-- Ratios are calculated from aggregated values (not averaged ratios)
-- MTD and PMTD are calculated at numerator and denominator levels
-- MoM % is used only for absolute metrics
-- Percentage-point change is used for ratio KPIs
-- Risk and profit metrics are never mixed without context
-
----
-
-## ⏱️ Time Intelligence
-- **MTD (Month-to-Date):** Current month performance up to selected date
-- **PMTD (Previous Month-to-Date):** Same period comparison
-- **MoM (Month-over-Month):** Trend analysis using correct mathematical logic
+Delivered Power BI report contains:
+- Functional dashboards: Finance, Sales, Marketing, Supply Chain
+- Executive Summary: high-level KPIs & trend lines
+- Key Performers: top customers, products, and regions
+- Additional panels:
+  - Information panel (FAQs, future Excel export capability)
+  - Support panel (feedback, issues, feature requests) — (integration subject to org approval)
 
 ---
 
 ## 🛠️ Tools & Technologies
-- Power BI Desktop
-- Power Query (ETL)
-- DAX (Measures & Time Intelligence)
-- Excel / CSV (Data Source)
-- GitHub (Version Control)
+- Data transformation: Power Query (M)
+- Data modeling & measures: DAX
+- Visualization & reporting: Power BI Desktop
+- Source systems: SQL Server / Excel
 
 ---
 
-## 📈 Key Insights (Summary)
-- Loan demand shows clear monthly seasonality
-- Certain loan purposes dominate application volume
-- Higher loan grades contribute disproportionately to risk
-- Rising DTI often precedes increases in bad loans
-- Profitability varies significantly by grade and purpose
-- High volume does not always translate into high profit
+## 📈 Key Insights (summary)
+Financial
+- Net sales grew multi-year (FY 2019 → FY 2022)
+- Net Profit % declined after 2020 due to growth-stage operational & marketing investments
+
+Market & Revenue
+- APAC (led by India) is the largest revenue contributor
+- Latin America is the smallest market
+- Amazon is the top global customer; Nova declined after FY 2020
+
+Product & Segment
+- Notebook segment: highest revenue growth, lower profitability in FY 2022
+- Desktop & Networking: underperformed in certain fiscal years
+- USB flash drives: consistent decline in FY 2021–2022
+
+Sales & Pricing
+- Uniform discounting across products/customers reduced gross margins
+- Several products had zero sales in FY 2022 → portfolio rationalization opportunities
+
+Forecasting & Supply Chain
+- Forecast accuracy dipped during COVID-19, recovered by FY 2022
+- Inventory issues shifted from overstocking (FY 2019–2020) to shortages (FY 2021–2022)
+- WFH demand increased strain on processors, keyboards, WiFi extenders
+
+Regional & Competitive
+- PC market share grew significantly FY 2021 → FY 2022
+- India fastest-growing market
+- North America: high revenue but lower market penetration
+- UK & Germany: high marketing cost with uneven returns
 
 ---
 
 ## 📌 Strategic Recommendations
-- Monitor approval rate trends to balance growth and risk
-- Limit exposure to high-risk grades during growth phases
-- Adjust pricing where interest does not compensate for default risk
-- Focus on stable employment segments for portfolio quality
-- Track profitability at a per-loan level, not just totals
+- Gradually optimize operational & marketing expenses as market share stabilizes
+- Replace flat discounting with performance-based discount strategies
+- Prioritize high-growth APAC markets (especially India)
+- Reassess pricing and cost structure for the Notebook segment
+- Reposition or upgrade declining product categories
+- Improve customer-level forecasting to balance inventory
+- Strengthen North America market penetration strategies
+- Optimize marketing spend in high-cost, low-return regions
+- Align inventory planning to peak months (Sep–Dec)
 
 ---
 
 ## 🧠 Skills & Learnings
-- Financial and credit risk analysis
-- KPI design aligned to business questions
-- Advanced DAX for time intelligence
-- Data modeling best practices
-- Dashboard storytelling for decision-makers
+- End-to-end BI project execution
+- Cross-functional KPI design
+- Advanced Power BI data modeling and DAX
+- Scalable, executive-ready dashboard design
+- Translating business problems into analytical solutions
 
 ---
 
-## ▶️ How to Review / Run
-- Open the `.pbix` file using Power BI Desktop
-- Ensure Date Table is properly related
-- Refresh data after configuring sources
-- Use slicers to test MTD and MoM behavior
-- Validate KPI behavior across pages
+## ▶️ How to review / run (notes)
+- Open the Power BI Desktop report (.pbix) in Power BI Desktop (recommended latest stable)
+- Connect to authorized SQL sources or swap in sample data files (not included)
+- Refresh model after configuring data source credentials
+- Test filter interactions and measure performance; optimize visuals if needed
 
 ---
 
 ## ⚠️ Limitations & Data Privacy
-- Dataset is for learning and demonstration purposes
-- Insights should be validated with real production data
-- No personally identifiable information (PII) is included
+- Raw data excluded due to bootcamp constraints
+- Some conclusions are sample-driven and should be validated with full production data before operational decisions
+
+---
+
+## Contributing
+- Suggestions, issue reports, and feature requests are welcome. Please file issues in the repository or send feedback via the Support panel in the report.
 
 ---
 
 ## Contact
-- Maintainer: **Sandeep-crtl**
-- Project: **Bank Loan Analysis Dashboard**
-- Platform: **Power BI**
+- Maintainer: Sandeep-crtl
+- Project: AtliQ Insights (fictional dataset)
 
 ---
 
-## 📸 Dashboard Preview
-![Dashboard Screenshot](./screenshots/bank_loan_dashboard.png)
+## Sreenshot
+![App Screenshot](https://github.com/Sandeep-crtl/Atliq_Insights/blob/main/Atliq%20Insights.png)
